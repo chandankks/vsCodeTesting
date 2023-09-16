@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            margin: 0;
+
+        }
+
+        /* header navbar menu code start */
+        #header{
+            height: 10vh;
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2);
+            
+            
+        }
+
+        #brand{
+            margin-left: 20px;
+            margin-top: 12px;
+            width: 90px;
+            height: 45px;
+            float: left;
+    
+
+        }
+        .search-bar{
+            display: inline-block;
+            margin-left: -90px;
+            height: 100%;
+            margin-top: 10px;
+            
+        }
+        #searchIn{
+           
+            height: 35px;
+            font-size: 15px;
+            color: rgb(96, 96, 143);
+            padding-left:10px;
+            padding-right: 10px;
+            border: 1px rgb(68, 68, 173) solid;
+            border-radius: 5px;
+        }
+        #searchButton{
+            outline: none;
+            margin-left: 10px;
+            margin-top: 5px;
+            width: 90px;
+            height: 40px;
+            font-size: 15px;
+            border:1px rgb(4, 175, 4) solid;
+            border-radius: 5px;
+            color:rgb(4, 175, 4) ;
+        }
+
+        #searchIn:focus{  
+            outline: none;
+            box-shadow: 0 0 5px 2px  rgb(138, 180, 248);
+            border: 2px rgb(118, 169, 250) solid;
+            border-radius: 5px;
+        }
+        
+        #searchButton:hover{
+            outline: none;
+            color: white;
+            background-color: rgb(4, 175, 4);
+
+        }
+
+    
+        #menubar{
+            display: none;
+            float: left;
+            padding: 5px;
+            width: 30px;
+            height: 30px;
+            margin-top: 20px;
+            margin-left: 10px;
+            border: 2px black solid;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .profile{
+            float: right;
+            margin-right: 10px;
+            margin-top: 14px;
+            display: inline-flex;
+            text-decoration: none;
+           
+            
+        }
+
+        .profile .img-profile{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            
+        }
+
+        
+        .username{
+            margin-top: 10px;
+            margin-right: 10px;
+            color: rgb(5, 5, 14);
+
+        }
+
+        #dropdown_menu{
+            float: right;
+            width: 100px;
+            height: 60px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background: rgb(163, 160, 155);
+            margin-right: 10px;
+            display: none;
+            z-index: 10;
+            
+            
+
+        }
+        .dropdown-item{
+            height:28px;
+            width: 100%;
+            text-align: center;
+            padding-top:2px ;
+        }
+        hr{
+            margin-top:-2px;
+        }
+        .dropdown-item-a{
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            
+            
+        }
+       
+
+        @media screen and (max-width: 700px) {
+           
+            #menubar{
+                display: block;
+                
+            }
+            #item{
+                display: none;
+                float: left;
+                margin-top: 70px;
+                margin-left: -50px; 
+            }
+           
+           
+           
+        }
+         /* header navbar menu code end */
+
+        .sidebar{
+            width: 30vh;
+            height: 90vh;
+            background: linear-gradient(130deg, rgb(53, 58, 124) , rgb(112, 163, 192));
+            color: rgb(241, 239, 239);
+            display: flex;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+            
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-size: 20px;
+            
+
+           
+           
+        }
+
+        .sidebar li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+            margin-left: 5vh;
+            
+        }
+
+        .sidebar li a:hover {
+            color: white;
+        }
+
+        .sub_menu{
+            display: none;
+            position: absolute;
+            background: linear-gradient(130deg, rgb(53, 58, 124) , rgb(112, 163, 192));
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 15px;
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .class:hover .sub_menu{
+            display: block;
+        }
+
+        #container{
+           width: 175vh;
+           height: 90vh; 
+           background-color: #dddfe6;
+          
+        }
+
+        
+
+
+        
+
+     
+            
+    </style>
+    <script>
+        
+        function func(){
+            header= document.getElementById("header").style;
+            var tex= document.getElementById("item").style;
+            profile = document.getElementById("profile").style;
+            if(tex.display == "none"){
+                tex. display="block";
+                header.height = "140px";
+                document.getElementById("dropdown_menu").style.display="none";
+            }else{
+                tex. display="none";
+                header.height = "70px";
+            }
+
+            
+        }
+    
+        function profile(){
+            inst = document.getElementById("dropdown_menu").style;
+            if(inst.display=="none"){
+                inst.display="block";
+            }else{
+                inst.display = "none";
+            }
+        }
+
+      
+    </script>
+</head>
+<body >
+    <div class="header" id="header">
+        
+        <button onclick = "func()" type = "submit" id = "menubar" ><span class="fa fa-bars"></span></button>
+        <img src="images/title.png" id="brand" alt="">
+         
+        
+        <span id = "item">
+            <div class="search-bar">
+                <input type="text" id="searchIn" placeholder="search">
+                <button id="searchButton">Search</button>
+            </div>
+        </span>
+        <span>
+            <div  class="profile"  onclick="profile()" id="profile">
+                <span class = "username">Kajal sir</span>
+                <img class="img-profile" height="50px" width="50px" src="images/sir.png" >
+            </div>
+        </span>
+    </div>
+    
+        <div class="dropdown-menu" id = "dropdown_menu">
+            <div class="dropdown-item">
+                <a  class="dropdown-item-a" href="#">
+                    <i class="profile-info"></i>
+                    Profile
+                </a>
+            </div>
+            <hr>
+            <div class="dropdown-item">
+                <a class="dropdown-item-a" href="#">
+                    <i class="Logout-bar"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+    
+    <div style="display: flex;flex-direction: row;">
+
+        <div class="sidebar">
+            <ul>
+                <li class="class"><a href="#">Classes</a>
+                    <div class="sub_menu">
+                        <ul>
+                            <li><a href="#">8<sup>th</sup></a></li><hr>
+                            <li><a href="#">9<sup>th</sup></a></li><hr>
+                            <li><a href="#">10<sup>th</sup></a></li><hr>
+                            <li><a href="#">11<sup>th</sup></a></li><hr>
+                            <li><a href="#">12<sup>th</sup></a></li><hr>
+                        </ul>
+                    </div>
+                </li><hr>
+                <li><a href="#">Masseges</a></li><hr>
+                <li><a href="#">Add Student</a></li><hr>
+                <li><a href="#">Student list</a></li><hr>
+            </ul>
+        </div>
+
+
+        <div id="container">
+            
+
+        </div>
+    </div>
+    
+    
+</body>
+</html>
